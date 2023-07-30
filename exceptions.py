@@ -1,7 +1,7 @@
 from fastapi import HTTPException, status
 
 
-class BookingException(HTTPException):
+class BlogException(HTTPException):
     status_code = 500
     detail = ""
 
@@ -9,30 +9,30 @@ class BookingException(HTTPException):
         super().__init__(status_code=self.status_code, detail=self.detail)
 
 
-class IncorrectEmailOrPasswordException(BookingException):
+class IncorrectEmailOrPasswordException(BlogException):
     status_code = status.HTTP_401_UNAUTHORIZED
     detail = "Неверная почта или пароль"
 
 
-class TokenExpiredException(BookingException):
+class TokenExpiredException(BlogException):
     status_code = status.HTTP_401_UNAUTHORIZED
     detail = "Срок действия токена истек"
 
 
-class TokenAbsentException(BookingException):
+class TokenAbsentException(BlogException):
     status_code = status.HTTP_401_UNAUTHORIZED
     detail = "Токен отсутствует"
 
 
-class IncorrectTokenFormatException(BookingException):
+class IncorrectTokenFormatException(BlogException):
     status_code = status.HTTP_401_UNAUTHORIZED
     detail = "Неверный формат токена"
 
 
-class UserIsNotPresentException(BookingException):
+class UserIsNotPresentException(BlogException):
     status_code = status.HTTP_401_UNAUTHORIZED
 
 
-class CannotAddDataToDatabase(BookingException):
+class CannotAddDataToDatabase(BlogException):
     status_code = status.HTTP_500_INTERNAL_SERVER_ERROR
     detail = "Не удалось добавить запись"
