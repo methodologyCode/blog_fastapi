@@ -5,7 +5,7 @@ from auth.dependencies import authenticate_user, create_access_token
 from db import db_user
 from db.database import get_db
 from exceptions import CannotAddDataToDatabase
-from schemas.user_schema import UserBase
+from schemas.user_schema import UserBase, UserDisplay
 
 router = APIRouter(
     prefix='/user',
@@ -15,11 +15,13 @@ router = APIRouter(
 
 @router.post("/register", status_code=201)
 def create_user(request: UserBase,
-                db: Session = Depends(get_db)):
+                db: Session = Depends(get_db)) -> UserDisplay:
     new_user = db_user.create_user(db=db, request=request)
 
     if not new_user:
         raise CannotAddDataToDatabase
+
+    return new_user
 
 
 @router.post("/login")

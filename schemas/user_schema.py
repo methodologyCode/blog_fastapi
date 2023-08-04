@@ -12,6 +12,9 @@ class UserDisplay(BaseModel):
     username: str
     email: EmailStr
 
+    class Config:
+        orm_mode = True
+
 
 # For PostDisplay/CommentDisplay
 class User(BaseModel):
