@@ -4,20 +4,12 @@ from typing import List
 from pydantic import BaseModel
 
 from schemas.comment_schema import Comment
+from schemas.user_schema import User
 
 
 class PostBase(BaseModel):
     image_url: str
     caption: str
-
-
-# For PostDisplay
-class User(BaseModel):
-    id: int
-    username: str
-
-    class Config:
-        orm_mode = True
 
 
 class PostDisplay(BaseModel):

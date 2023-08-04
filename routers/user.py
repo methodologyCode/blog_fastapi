@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, Response
 from sqlalchemy.orm.session import Session
 
-from auth.dependencies import (authenticate_user, create_access_token)
+from auth.dependencies import authenticate_user, create_access_token
 from db import db_user
 from db.database import get_db
 from exceptions import CannotAddDataToDatabase

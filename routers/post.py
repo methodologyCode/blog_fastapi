@@ -33,4 +33,4 @@ def get_all_posts(db: Session = Depends(get_db)) -> List[PostDisplay]:
 @router.delete('/delete/{post_id}')
 def delete(post_id: int, db: Session = Depends(get_db),
            current_user: DbUser = Depends(get_current_user)):
-    return Post.delete(db, current_user.id, post_id)
+    return Post.delete(db, current_user.id, id=post_id)
